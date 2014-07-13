@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xfce4-panel -q;
+killall -KILL xfconfd;
+killall -KILL xfsettingsd;

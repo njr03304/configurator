@@ -1,0 +1,13 @@
+packages:
+    geany:
+        base_path: ~/.config/
+        package: geany
+    alias:
+        base_path: /etc/profile.d/
+        package: alias.sh
+    xfce4:
+        base_path: ~/.config/
+        package: xfce4
+    git:
+        base_path: ~/
+        package: .gitconfig
