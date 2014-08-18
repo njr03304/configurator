@@ -1,8 +1,8 @@
 #!/bin/python3
 
-import os, shutil, yaml, subprocess, sys
+import os, yaml, subprocess, sys
 
-subprocess.call(['tar', '-xf', sys.argv[1]]);
+archive = sys.argv[1]
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 manifest = yaml.load(open('manifest.yml', 'r'))
@@ -10,13 +10,17 @@ manifest = yaml.load(open('manifest.yml', 'r'))
 subprocess.call(project_dir + '/xfce4-shutdown')
 
 for package in manifest['packages']:
-    package_base_path = manifest['packages'][package]['base_path']
-    package_name = manifest['packages'][package]['package']
-    if package_base_path[0] == '~':
-        package_base_path = package_base_path.replace('~', os.environ['HOME'])
+    manifest_element = manifest['packages'][package]
+    package_directory = manifest_element['directory']
+    package_name = manifest_element['package']
+    if package_directory[0] == '~':
+        package_directory = package_directory.replace('~', os.environ['HOME'])
 
-    os.symlink(package_base_path + package_name, project_dir + '/configs/' + package_name)
+    print('Deploying ' + package_name)
+    call = ["rsync", "-rK", archive + "/" + package_name, project_dir + '/configs/' + package_directory + '/' + package_name]
+    if 'use_sudo' in manifest_element and manifest_element['use_sudo']:
+        call.insert(0, 'sudo')
 
-    subprocess.call(["rsync", "-rk", "config/" + package_name, project_dir + '/configs/' + package_name])
+    subprocess.call(call)
 
 subprocess.call(project_dir + '/xfce4-startup')

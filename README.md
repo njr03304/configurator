@@ -1,22 +1,37 @@
 Configuration Deployer
 ======================
+Deploy various configuration files through the magic of symlinks.
+
+Basic Usage
+------------------------------------
+- Build Symlinks
+- Push Config changes through symlinks with rsync
+- Retrieve changes to config files and push them somewhere else
+
+Dependencies
+------------------------------------
+    sudo yum install python3-PyYAML
+
+Build the Symlinks
+------------------------------------
+    ./link.py
 
 Deploy a set of configuration files
 ------------------------------------
-    python3 deploy.py config.tgz
+    ./deploy.py config/config
 
-`config.tgz` is assumed to be an archived copy of configuration files stored in a single directory called `config`.  The files must be in `manifest.yml`.
+`config/config` is assumed to be a directory containing configuration files.  This would ideally be a git repo.  The files must be in `manifest.yml`.
 
-
-To archive the current configuations
+Retrieve a set of configurationj files
 -------------------------------------
-    mv configs config; tar -h -czf config.tgz config; mv config configs;
+    ./retrieve.py config/config
 
+`config/config` is assumed to be a directory containing configuration files.  This would ideally be a git repo.  The files must be in `manifest.yml`.
 
 To add a new config file to the list
 -------------------------------------
 Add a reference to `manifest.yml`.
 
-Create a symlink to the file or directory in `configs`
+Re-build symlinks
 
-Archive the current config (see above)
+Deploy and Retrieve as you desire

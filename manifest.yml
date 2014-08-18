@@ -1,13 +1,22 @@
+directories:
+    user_config:
+        path: ~/.config/
+    profile.d:
+        path: /etc/profile.d/
+    user_home:
+        path: ~/
+
 packages:
     geany:
-        base_path: ~/.config/
+        directory: user_config
         package: geany
     alias:
-        base_path: /etc/profile.d/
+        directory: profile.d
         package: alias.sh
+        use_sudo: true
     xfce4:
-        base_path: ~/.config/
+        directory: user_config
         package: xfce4
     git:
-        base_path: ~/
+        directory: user_home
         package: .gitconfig
