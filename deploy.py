@@ -17,7 +17,7 @@ for package in manifest['packages']:
         package_directory = package_directory.replace('~', os.environ['HOME'])
 
     print('Deploying ' + package_name)
-    call = ["rsync", "-rK", archive + "/" + package_name, project_dir + '/configs/' + package_directory + '/' + package_name]
+    call = ["rsync", "-rK", archive + "/" + package_name, project_dir + '/configs/' + package_directory]
     if 'use_sudo' in manifest_element and manifest_element['use_sudo']:
         call.insert(0, 'sudo')
 
