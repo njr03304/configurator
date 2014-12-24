@@ -18,15 +18,15 @@ Build the Symlinks
 
 Deploy a set of configuration files
 ------------------------------------
-    ./deploy.py config/config
+    ./deploy.py config/
 
-`config/config` is assumed to be a directory containing configuration files.  This would ideally be a git repo.  The files must be in `manifest.yml`.
+`config/` is assumed to be a directory containing configuration files.  This would ideally be a git repo.  The files must be in `manifest.yml`.
 
 Retrieve a set of configurationj files
 -------------------------------------
-    ./retrieve.py config/config
+    ./retrieve.py config/
 
-`config/config` is assumed to be a directory containing configuration files.  This would ideally be a git repo.  The files must be in `manifest.yml`.
+`config/` is assumed to be a directory containing configuration files.  This would ideally be a git repo.  The files must be in `manifest.yml`.
 
 To add a new config file to the list
 -------------------------------------
