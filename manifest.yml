@@ -3,6 +3,8 @@ directories:
         path: ~/.config/
     profile.d:
         path: /etc/profile.d/
+    bash_completion.d:
+        path: /etc/bash_completion.d/
     user_home:
         path: ~/
 
@@ -20,3 +22,10 @@ packages:
     git:
         directory: user_home
         package: .gitconfig
+    gitflow_bash_completion:
+        directory: bash_completion.d
+        package: git-flow-completion.bash
+        use_sudo: true
+    bashrc:
+        directory: user_home
+        package: .bashrc
