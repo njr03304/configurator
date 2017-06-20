@@ -29,3 +29,9 @@ packages:
     bashrc:
         directory: user_home
         package: .bashrc
+    home_dir_projects:
+        directory: user_home
+        package: projects
+    home_dir_bin:
+        directory: user_home
+        package: bin

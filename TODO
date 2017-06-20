@@ -1,0 +1,3 @@
+Home directory symlinks - different username - fix the symlink
+pre/post deploy/retrieve scripts
+manifest - should not be in project root

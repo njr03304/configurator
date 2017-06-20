@@ -14,4 +14,4 @@ for package in manifest['packages']:
         package_directory = package_directory.replace('~', os.environ['HOME'])
 
     print('Retrieving ' + package_name)
-    subprocess.call(["rsync", "-r", "--copy-links", project_dir + '/configs/' + package_directory + '/' + package_name, archive])
+    subprocess.call(["rsync", "-r", "-a", project_dir + '/configs/' + package_directory + '/' + package_name, archive])
